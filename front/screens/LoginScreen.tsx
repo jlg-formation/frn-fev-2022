@@ -8,14 +8,16 @@ function LoginScreen() {
       <Text style={[gs.text, gs.title]}>Connexion</Text>
       <View style={gs.form}>
         <View style={gs.label}>
-          <Text>Identifiant</Text>
+          <Text style={gs.text}>Identifiant</Text>
           <TextInput style={gs.input} />
         </View>
         <View style={gs.label}>
-          <Text>Mot de passe</Text>
+          <Text style={gs.text}>Mot de passe</Text>
           <TextInput style={gs.input} />
         </View>
-        <Button title="Se connecter" />
+        <View style={gs.submitButton}>
+          <Button title="Se connecter" />
+        </View>
       </View>
     </View>
   );
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'white',
-    padding: 5,
+    padding: 10,
   },
   image: {
     width: 200,

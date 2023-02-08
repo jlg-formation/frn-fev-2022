@@ -7,10 +7,20 @@ export const gs = StyleSheet.create({
     fontSize: 16,
   },
   title: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
   },
-  form: {},
+  form: {
+    width: '100%',
+  },
   label: {},
-  input: {},
+  input: {
+    borderColor: 'black',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  submitButton: {
+    marginTop: 70,
+  },
 });
