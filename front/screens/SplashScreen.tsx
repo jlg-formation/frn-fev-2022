@@ -4,7 +4,7 @@ import {gs} from '../styles';
 
 function SplashScreen() {
   return (
-    <View>
+    <View style={styles.view}>
       <Image style={styles.image} source={require('../assets/logo.png')} />
       <Text style={[gs.text, styles.text]}>Photobook</Text>
     </View>
@@ -12,10 +12,22 @@ function SplashScreen() {
 }
 
 const styles = StyleSheet.create({
-  image: {
-    height: 100,
+  view: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'white',
+    padding: 5,
   },
-  text: {},
+  image: {
+    width: 200,
+    height: 200,
+  },
+  text: {
+    fontSize: 40,
+    fontWeight: 'bold',
+  },
 });
 
 export default SplashScreen;
