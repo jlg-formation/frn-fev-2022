@@ -4,7 +4,7 @@ import {gs} from '../styles';
 
 function SplashScreen() {
   return (
-    <View style={styles.view}>
+    <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/logo.png')} />
       <Text style={[gs.text, styles.text]}>Photobook</Text>
     </View>
@@ -12,7 +12,7 @@ function SplashScreen() {
 }
 
 const styles = StyleSheet.create({
-  view: {
+  container: {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',

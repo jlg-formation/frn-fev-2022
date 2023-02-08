@@ -1,8 +1,8 @@
 import React from 'react';
-import SplashScreen from './screens/SplashScreen';
+import LoginScreen from './screens/LoginScreen';
 
 function App() {
-  return <SplashScreen />;
+  return <LoginScreen />;
 }
 
 export default App;
