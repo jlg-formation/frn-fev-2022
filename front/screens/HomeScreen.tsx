@@ -1,26 +1,25 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {RootStackParamList} from './navigation';
+import {Image, StyleSheet, View} from 'react-native';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
-
-export function HomeScreen({navigation}: Props) {
+export function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Legal"
-        onPress={() => navigation.navigate('Legal')}
-      />
-      <Button
-        title="Go to Settings"
-        onPress={() => navigation.navigate('Settings')}
+      <Image
+        style={styles.header}
+        source={require('../assets/user-default-header.jpg')}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  header: {
+    width: '100%',
+    height: 150,
+  },
 });
