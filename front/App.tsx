@@ -6,7 +6,7 @@ import {useAuthenticationStore} from './store/authentication';
 
 function App() {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
-  const authenticationStore = useAuthenticationStore();
+  const {isConnected} = useAuthenticationStore();
 
   useEffect(() => {
     setTimeout(() => {
@@ -15,16 +15,12 @@ function App() {
     }, 2000);
   }, []);
 
-  const onConnected = () => {
-    authenticationStore.connect();
-  };
-
   return showSplashScreen ? (
     <SplashScreen name="PhotoBook" />
-  ) : authenticationStore.isConnected ? (
+  ) : isConnected ? (
     <MenuScreen />
   ) : (
-    <LoginScreen onConnected={onConnected} />
+    <LoginScreen />
   );
 }
 

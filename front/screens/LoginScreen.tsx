@@ -1,11 +1,13 @@
 import React from 'react';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import {t} from '../i18n';
+import {useAuthenticationStore} from '../store/authentication';
 import {gs} from '../styles';
 
-const LoginScreen = ({onConnected}: {onConnected: () => void}) => {
+const LoginScreen = () => {
+  const {connect} = useAuthenticationStore();
   const onSubmit = () => {
-    onConnected();
+    connect();
   };
   return (
     <View style={styles.container}>
