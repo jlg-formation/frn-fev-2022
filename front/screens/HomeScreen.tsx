@@ -1,9 +1,15 @@
 import React from 'react';
-import {Text, TouchableHighlight} from 'react-native';
-import {TextInput} from 'react-native';
-import {Image, StyleSheet, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableNativeFeedback,
+  View,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {primaryColor} from '../styles';
+import {t} from '../i18n';
 
 export function HomeScreen() {
   const addPhoto = () => {
@@ -16,18 +22,22 @@ export function HomeScreen() {
         source={require('../assets/user-default-header.jpg')}
       />
       <View style={styles.postAdd}>
-        <TextInput style={styles.textArea} multiline={true} />
+        <TextInput
+          style={styles.textArea}
+          multiline={true}
+          placeholder={t.whatOnYourMind}
+        />
         <View style={styles.postAddBottom}>
-          <TouchableHighlight onPress={addPhoto} style={styles.touchable}>
+          <TouchableNativeFeedback onPress={addPhoto} style={styles.touchable}>
             <View style={styles.addPhotoButton}>
               <Ionicons name="camera-outline" size={30} color={primaryColor} />
             </View>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={addPhoto} style={styles.touchable}>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={addPhoto} style={styles.touchable}>
             <View style={styles.postButton}>
               <Text style={styles.postButtonText}>Envoyer</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
         </View>
       </View>
     </View>
