@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, RouteProp} from '@react-navigation/native';
 import React from 'react';
 import {HomeScreen} from './HomeScreen';
 import {LegalScreen} from './LegalScreen';
@@ -22,24 +22,26 @@ const getIconName = (name: string, focused: boolean) => {
   return 'ios-list';
 };
 
+const IconSelector =
+  (route: RouteProp<RootStackParamList, keyof RootStackParamList>) =>
+  ({focused, color, size}: {focused: boolean; color: string; size: number}) => {
+    // You can return any component that you like here!
+    return (
+      <Ionicons
+        name={getIconName(route.name, focused)}
+        size={size}
+        color={color}
+      />
+    );
+  };
+
 function MenuScreen() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({route}) => ({
-          // We have disable the linter because this is the example from the react navigation doc.
-          // eslint-disable-next-line react/no-unstable-nested-components
-          tabBarIcon: ({focused, color, size}) => {
-            // You can return any component that you like here!
-            return (
-              <Ionicons
-                name={getIconName(route.name, focused)}
-                size={size}
-                color={color}
-              />
-            );
-          },
+          tabBarIcon: IconSelector(route),
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
         })}>
