@@ -6,6 +6,7 @@
   },
   "ignorePatterns": [],
   "rules": {
-    "prefer-const": "warn"
+    "prefer-const": "error",
+    "no-else-return": "error"
   }
 }
