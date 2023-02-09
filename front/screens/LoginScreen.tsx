@@ -3,7 +3,7 @@ import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import {t} from '../i18n';
 import {gs} from '../styles';
 
-function LoginScreen({onConnected}: {onConnected: () => void}) {
+const LoginScreen = ({onConnected}: {onConnected: () => void}) => {
   const onSubmit = () => {
     onConnected();
   };
@@ -25,7 +25,7 @@ function LoginScreen({onConnected}: {onConnected: () => void}) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
