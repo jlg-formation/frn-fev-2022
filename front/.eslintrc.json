@@ -4,5 +4,8 @@
   "parserOptions": {
     "requireConfigFile": false
   },
-  "ignorePatterns": []
+  "ignorePatterns": [],
+  "rules": {
+    "prefer-const": "warn"
+  }
 }
