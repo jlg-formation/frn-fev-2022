@@ -1,10 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
-export function HomeScreen() {
+export function HomeScreen({navigation}: {navigation: any}) {
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
+      <Button
+        title="Go to Legal"
+        onPress={() => navigation.navigate('Legal')}
+      />
     </View>
   );
 }
