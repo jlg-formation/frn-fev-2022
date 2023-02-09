@@ -7,17 +7,19 @@ import {RootStackParamList} from './navigation';
 import {SettingsScreen} from './SettingsScreen';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {t} from '../i18n';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const getIconName = (name: string, focused: boolean) => {
   if (name === 'Home') {
-    return focused
-      ? 'ios-information-circle'
-      : 'ios-information-circle-outline';
+    return focused ? 'home' : 'home-outline';
+  }
+  if (name === 'Legal') {
+    return focused ? 'information-circle' : 'information-circle-outline';
   }
   if (name === 'Settings') {
-    return focused ? 'ios-list' : 'ios-list-outline';
+    return focused ? 'settings' : 'settings-outline';
   }
   return 'ios-list';
 };
@@ -45,9 +47,27 @@ function MenuScreen() {
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Legal" component={LegalScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            tabBarLabel: t.home,
+          }}
+        />
+        <Tab.Screen
+          name="Legal"
+          component={LegalScreen}
+          options={{
+            tabBarLabel: t.legal,
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{
+            tabBarLabel: t.settings,
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

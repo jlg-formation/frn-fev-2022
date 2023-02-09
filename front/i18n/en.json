@@ -3,5 +3,8 @@
   "password": "Password",
   "loginScreen": {
     "title": "Connexion"
-  }
+  },
+  "home": "Home",
+  "legal": "Legal",
+  "settings": "Settings"
 }

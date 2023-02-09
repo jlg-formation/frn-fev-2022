@@ -3,5 +3,8 @@
   "password": "Mot de passe",
   "loginScreen": {
     "title": "Se connecter"
-  }
+  },
+  "home": "Accueil",
+  "legal": "Mentions Légales",
+  "settings": "Paramètres"
 }
