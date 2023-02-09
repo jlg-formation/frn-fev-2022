@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import LoginScreen from './screens/LoginScreen';
 import MenuScreen from './screens/MenuScreen';
 import SplashScreen from './screens/SplashScreen';
+import {useAuthenticationStore} from './store/authentication';
 
 function App() {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
-  const [isConnected, setIsConnected] = useState(false);
+  const authenticationStore = useAuthenticationStore();
 
   useEffect(() => {
     setTimeout(() => {
@@ -15,12 +16,12 @@ function App() {
   }, []);
 
   const onConnected = () => {
-    setIsConnected(true);
+    authenticationStore.connect();
   };
 
   return showSplashScreen ? (
     <SplashScreen name="PhotoBook" />
-  ) : isConnected ? (
+  ) : authenticationStore.isConnected ? (
     <MenuScreen />
   ) : (
     <LoginScreen onConnected={onConnected} />
