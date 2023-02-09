@@ -53,8 +53,8 @@ export function HomeScreen() {
             </TouchableNativeFeedback>
           </View>
         </View>
-        {new Array(10).fill(0).map(() => (
-          <View style={styles.postItem}>
+        {new Array(10).fill(0).map((x, i) => (
+          <View style={styles.postItem} key={i}>
             <Text style={gs.text}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quasi
               vero porro, autem ipsam alias culpa incidunt magnam tempore! Quam
