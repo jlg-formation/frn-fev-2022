@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer, RouteProp} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {HomeScreen} from './HomeScreen';
 import {LegalScreen} from './LegalScreen';
@@ -11,26 +11,13 @@ import {t} from '../i18n';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
-const getIconName = (name: string, focused: boolean) => {
-  if (name === 'Home') {
-    return focused ? 'home' : 'home-outline';
-  }
-  if (name === 'Legal') {
-    return focused ? 'information-circle' : 'information-circle-outline';
-  }
-  if (name === 'Settings') {
-    return focused ? 'settings' : 'settings-outline';
-  }
-  return 'ios-list';
-};
-
 const IconSelector =
-  (route: RouteProp<RootStackParamList, keyof RootStackParamList>) =>
+  (iconName: string, iconFocusName: string) =>
   ({focused, color, size}: {focused: boolean; color: string; size: number}) => {
     // You can return any component that you like here!
     return (
       <Ionicons
-        name={getIconName(route.name, focused)}
+        name={focused ? iconName : iconFocusName}
         size={size}
         color={color}
       />
@@ -42,8 +29,7 @@ function MenuScreen() {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
-        screenOptions={({route}) => ({
-          tabBarIcon: IconSelector(route),
+        screenOptions={() => ({
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
         })}>
@@ -52,6 +38,7 @@ function MenuScreen() {
           component={HomeScreen}
           options={{
             tabBarLabel: t.home,
+            tabBarIcon: IconSelector('home', 'home-outline'),
           }}
         />
         <Tab.Screen
@@ -59,6 +46,10 @@ function MenuScreen() {
           component={LegalScreen}
           options={{
             tabBarLabel: t.legal,
+            tabBarIcon: IconSelector(
+              'information-circle',
+              'information-circle-outline',
+            ),
           }}
         />
         <Tab.Screen
@@ -66,6 +57,7 @@ function MenuScreen() {
           component={SettingsScreen}
           options={{
             tabBarLabel: t.settings,
+            tabBarIcon: IconSelector('settings', 'settings-outline'),
           }}
         />
       </Tab.Navigator>
