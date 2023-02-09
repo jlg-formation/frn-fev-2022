@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableNativeFeedback,
+  Vibration,
   View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -13,6 +14,7 @@ import {t} from '../i18n';
 
 export function HomeScreen() {
   const addPhoto = () => {
+    Vibration.vibrate(5);
     console.log('add photo');
   };
   return (
