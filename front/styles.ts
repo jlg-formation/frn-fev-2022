@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+export const primaryColor = 'tomato';
+
 export const gs = StyleSheet.create({
   text: {
     color: 'black',

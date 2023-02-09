@@ -3,6 +3,7 @@ import {Text, TouchableHighlight} from 'react-native';
 import {TextInput} from 'react-native';
 import {Image, StyleSheet, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {primaryColor} from '../styles';
 
 export function HomeScreen() {
   const addPhoto = () => {
@@ -19,7 +20,7 @@ export function HomeScreen() {
         <View style={styles.postAddBottom}>
           <TouchableHighlight onPress={addPhoto} style={styles.touchable}>
             <View style={styles.addPhotoButton}>
-              <Ionicons name="camera-outline" size={30} color="tomato" />
+              <Ionicons name="camera-outline" size={30} color={primaryColor} />
             </View>
           </TouchableHighlight>
           <TouchableHighlight onPress={addPhoto} style={styles.touchable}>
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'white',
     borderWidth: 1,
-    borderColor: 'tomato',
+    borderColor: primaryColor,
   },
   touchable: {
     borderRadius: 5,
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 0,
     borderRadius: 5,
-    backgroundColor: 'tomato',
+    backgroundColor: primaryColor,
     height: 35,
     width: 100,
     justifyContent: 'center',

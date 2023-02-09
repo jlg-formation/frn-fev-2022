@@ -8,6 +8,7 @@ import {SettingsScreen} from './SettingsScreen';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {t} from '../i18n';
+import {primaryColor} from '../styles';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -30,7 +31,7 @@ function MenuScreen() {
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={() => ({
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: primaryColor,
           tabBarInactiveTintColor: 'gray',
           headerShown: false,
         })}>
