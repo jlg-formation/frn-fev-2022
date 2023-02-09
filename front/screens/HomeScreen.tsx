@@ -9,10 +9,11 @@ import {
   View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {primaryColor} from '../styles';
+import {gs, primaryColor} from '../styles';
 import {t} from '../i18n';
 
 export function HomeScreen() {
+  const hasPhoto = true;
   const addPhoto = () => {
     Vibration.vibrate(5);
     console.log('add photo');
@@ -41,6 +42,19 @@ export function HomeScreen() {
             </View>
           </TouchableNativeFeedback>
         </View>
+      </View>
+      <View style={styles.postItem}>
+        <Text style={gs.text}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quasi vero
+          porro, autem ipsam alias culpa incidunt magnam tempore! Quam dicta
+          debitis vel asperiores id hic temporibus vero ab voluptatem!
+        </Text>
+        {hasPhoto && (
+          <Image
+            style={styles.postItemImage}
+            source={require('../assets/user-default-header.jpg')}
+          />
+        )}
       </View>
     </View>
   );
@@ -97,5 +111,17 @@ const styles = StyleSheet.create({
   },
   postButtonText: {
     color: 'white',
+  },
+  postItem: {
+    margin: 10,
+    padding: 5,
+    backgroundColor: 'white',
+    borderColor: 'hsl(0, 0%, 80%)',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  postItemImage: {
+    width: '100%',
+    maxHeight: 150,
   },
 });
