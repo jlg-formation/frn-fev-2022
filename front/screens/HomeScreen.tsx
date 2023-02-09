@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -19,44 +20,56 @@ export function HomeScreen() {
     console.log('add photo');
   };
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.header}
-        source={require('../assets/user-default-header.jpg')}
-      />
-      <View style={styles.postAdd}>
-        <TextInput
-          style={styles.textArea}
-          multiline={true}
-          placeholder={t.whatOnYourMind}
+    <ScrollView>
+      <View style={styles.container}>
+        <Image
+          style={styles.header}
+          source={require('../assets/user-default-header.jpg')}
         />
-        <View style={styles.postAddBottom}>
-          <TouchableNativeFeedback onPress={addPhoto} style={styles.touchable}>
-            <View style={styles.addPhotoButton}>
-              <Ionicons name="camera-outline" size={30} color={primaryColor} />
-            </View>
-          </TouchableNativeFeedback>
-          <TouchableNativeFeedback onPress={addPhoto} style={styles.touchable}>
-            <View style={styles.postButton}>
-              <Text style={styles.postButtonText}>Envoyer</Text>
-            </View>
-          </TouchableNativeFeedback>
-        </View>
-      </View>
-      <View style={styles.postItem}>
-        <Text style={gs.text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quasi vero
-          porro, autem ipsam alias culpa incidunt magnam tempore! Quam dicta
-          debitis vel asperiores id hic temporibus vero ab voluptatem!
-        </Text>
-        {hasPhoto && (
-          <Image
-            style={styles.postItemImage}
-            source={require('../assets/user-default-header.jpg')}
+        <View style={styles.postAdd}>
+          <TextInput
+            style={styles.textArea}
+            multiline={true}
+            placeholder={t.whatOnYourMind}
           />
-        )}
+          <View style={styles.postAddBottom}>
+            <TouchableNativeFeedback
+              onPress={addPhoto}
+              style={styles.touchable}>
+              <View style={styles.addPhotoButton}>
+                <Ionicons
+                  name="camera-outline"
+                  size={30}
+                  color={primaryColor}
+                />
+              </View>
+            </TouchableNativeFeedback>
+            <TouchableNativeFeedback
+              onPress={addPhoto}
+              style={styles.touchable}>
+              <View style={styles.postButton}>
+                <Text style={styles.postButtonText}>Envoyer</Text>
+              </View>
+            </TouchableNativeFeedback>
+          </View>
+        </View>
+        {new Array(10).fill(0).map(() => (
+          <View style={styles.postItem}>
+            <Text style={gs.text}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quasi
+              vero porro, autem ipsam alias culpa incidunt magnam tempore! Quam
+              dicta debitis vel asperiores id hic temporibus vero ab voluptatem!
+            </Text>
+            {hasPhoto && (
+              <Image
+                style={styles.postItemImage}
+                source={require('../assets/user-default-header.jpg')}
+              />
+            )}
+          </View>
+        ))}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -119,9 +132,10 @@ const styles = StyleSheet.create({
     borderColor: 'hsl(0, 0%, 80%)',
     borderWidth: 1,
     borderRadius: 5,
+    gap: 15,
   },
   postItemImage: {
     width: '100%',
-    maxHeight: 150,
+    height: 150,
   },
 });
