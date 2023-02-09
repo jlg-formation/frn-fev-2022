@@ -2,11 +2,12 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {gs} from '../styles';
 
-function SplashScreen() {
+function SplashScreen({name, version}: {name: string; version?: string}) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/logo.png')} />
-      <Text style={[gs.text, styles.text]}>Photobook</Text>
+      <Text style={[gs.text, styles.text]}>{name}</Text>
+      {version && <Text style={[gs.text, styles.version]}>{version}</Text>}
     </View>
   );
 }
@@ -26,6 +27,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 40,
+    fontWeight: 'bold',
+  },
+  version: {
+    fontSize: 20,
     fontWeight: 'bold',
   },
 });

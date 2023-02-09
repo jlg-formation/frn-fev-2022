@@ -5,7 +5,7 @@ import SplashScreen from './screens/SplashScreen';
 
 function App() {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
-  const isConnected = false;
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,12 +14,16 @@ function App() {
     }, 2000);
   }, []);
 
+  const onConnected = () => {
+    setIsConnected(true);
+  };
+
   return showSplashScreen ? (
-    <SplashScreen />
+    <SplashScreen name="PhotoBook" />
   ) : isConnected ? (
     <MenuScreen />
   ) : (
-    <LoginScreen />
+    <LoginScreen onConnected={onConnected} />
   );
 }
 
