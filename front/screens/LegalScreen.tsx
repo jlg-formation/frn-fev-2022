@@ -1,11 +1,12 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {t} from '../i18n';
 import {gs} from '../styles';
 
 export function LegalScreen() {
   return (
     <View style={styles.container}>
-      <Text style={[gs.text, gs.title]}>Mentions Légales</Text>
+      <Text style={[gs.text, gs.title]}>{t.legal}</Text>
       <ScrollView>
         <View>
           <Text style={gs.text}>
