@@ -14,7 +14,7 @@ export function SettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={[gs.text, gs.title]}>Settings Screen</Text>
+      <Text style={[gs.text, gs.title]}>{t.settings}</Text>
       <Text style={[gs.text, gs.h2]}>Language</Text>
       <TouchableNativeFeedback
         onPress={changeLanguage('fr')}
