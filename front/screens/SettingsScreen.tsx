@@ -1,5 +1,11 @@
-import React from 'react';
-import {TouchableNativeFeedback, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  TouchableNativeFeedback,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import {useAuthenticationStore} from '../store/authentication';
 import {Locale, useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
@@ -7,14 +13,18 @@ import {gs, primaryColor} from '../styles';
 export function SettingsScreen() {
   const {t, changeLocale} = useLocaleStore();
   const {disconnect} = useAuthenticationStore();
+  const [isDisconnecting, setIsDisconnecting] = useState(false);
   const changeLanguage = (locale: Locale) => () => {
     console.log('locale: ', locale);
     changeLocale(locale);
   };
 
-  const onDisconnect = () => {
+  const onDisconnect = async () => {
     console.log('disconnect');
-    disconnect();
+    setIsDisconnecting(true);
+    await disconnect();
+    setIsDisconnecting(false);
+    console.log('disconnected');
   };
 
   return (
@@ -36,11 +46,17 @@ export function SettingsScreen() {
         </View>
       </TouchableNativeFeedback>
       <Text style={[gs.text, gs.h2]}>{t.disconnect}</Text>
-      <TouchableNativeFeedback onPress={onDisconnect} style={styles.touchable}>
-        <View style={styles.disconnectButton}>
-          <Text style={styles.disconnectText}>{t.disconnect}</Text>
-        </View>
-      </TouchableNativeFeedback>
+      {isDisconnecting ? (
+        <ActivityIndicator />
+      ) : (
+        <TouchableNativeFeedback
+          onPress={onDisconnect}
+          style={styles.touchable}>
+          <View style={styles.disconnectButton}>
+            <Text style={styles.disconnectText}>{t.disconnect}</Text>
+          </View>
+        </TouchableNativeFeedback>
+      )}
     </View>
   );
 }
