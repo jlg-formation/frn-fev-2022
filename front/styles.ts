@@ -17,6 +17,7 @@ export const gs = StyleSheet.create({
   },
   form: {
     width: '100%',
+    gap: 10,
   },
   label: {},
   input: {

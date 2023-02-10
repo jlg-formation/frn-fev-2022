@@ -12,6 +12,7 @@ import {useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
 
 const LoginScreen = () => {
+  const [login, setLogin] = useState('');
   const [isConnecting, setIsConnecting] = useState(false);
   const {t} = useLocaleStore();
   const {connect} = useAuthenticationStore();
@@ -31,11 +32,11 @@ const LoginScreen = () => {
       <View style={gs.form}>
         <View style={gs.label}>
           <Text style={gs.text}>{t.login}</Text>
-          <TextInput style={gs.input} />
+          <TextInput style={gs.input} onChangeText={setLogin} />
         </View>
         <View style={gs.label}>
           <Text style={gs.text}>{t.password}</Text>
-          <TextInput style={gs.input} />
+          <TextInput style={gs.input} secureTextEntry={true} />
         </View>
         <View style={gs.submitButton}>
           {isConnecting ? (
@@ -44,6 +45,7 @@ const LoginScreen = () => {
             <Button title="Se connecter" onPress={onSubmit} />
           )}
         </View>
+        <Text>login: {login}</Text>
       </View>
     </View>
   );
