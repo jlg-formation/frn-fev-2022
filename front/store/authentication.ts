@@ -14,10 +14,13 @@ export const useAuthenticationStore = create<AuthenticationStore>(set => ({
     try {
       console.log('login: ', login);
       console.log('password: ', password);
-      const response = await fetch(domainUrl + '/api/connect', {
+      const response = await fetch(domainUrl + '/api/auth/connect', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
-          login: login,
+          email: login,
           password: password,
         }),
       });
