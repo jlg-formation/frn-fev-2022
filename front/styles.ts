@@ -28,4 +28,12 @@ export const gs = StyleSheet.create({
   submitButton: {
     marginTop: 70,
   },
+  h2: {
+    color: '#444',
+    padding: 10,
+    fontSize: 24,
+    fontWeight: 'bold',
+    width: '100%',
+    textAlign: 'left',
+  },
 });
