@@ -1,10 +1,11 @@
 import React from 'react';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
-import {t} from '../i18n';
 import {useAuthenticationStore} from '../store/authentication';
+import {useLocaleStore} from '../store/locale';
 import {gs} from '../styles';
 
 const LoginScreen = () => {
+  const {t} = useLocaleStore();
   const {connect} = useAuthenticationStore();
   const onSubmit = () => {
     connect();

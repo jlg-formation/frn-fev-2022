@@ -1,11 +1,13 @@
 import React from 'react';
 import {TouchableNativeFeedback, StyleSheet, Text, View} from 'react-native';
-import {t} from '../i18n';
+import {Locale, useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
 
 export function SettingsScreen() {
-  const changeLanguage = (locale: string) => () => {
+  const {t, changeLocale} = useLocaleStore();
+  const changeLanguage = (locale: Locale) => () => {
     console.log('locale: ', locale);
+    changeLocale(locale);
   };
 
   const disconnect = () => {

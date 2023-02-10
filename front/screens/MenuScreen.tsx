@@ -7,8 +7,8 @@ import {RootStackParamList} from './navigation';
 import {SettingsScreen} from './SettingsScreen';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {t} from '../i18n';
 import {primaryColor} from '../styles';
+import {useLocaleStore} from '../store/locale';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -26,6 +26,7 @@ const IconSelector =
   };
 
 function MenuScreen() {
+  const {t} = useLocaleStore();
   return (
     <NavigationContainer>
       <Tab.Navigator

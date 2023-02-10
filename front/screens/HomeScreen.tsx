@@ -10,10 +10,11 @@ import {
   View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
-import {t} from '../i18n';
 
 export function HomeScreen() {
+  const {t} = useLocaleStore();
   const hasPhoto = true;
   const addPhoto = () => {
     Vibration.vibrate(5);

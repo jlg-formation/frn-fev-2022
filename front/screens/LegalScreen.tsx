@@ -1,9 +1,10 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {t} from '../i18n';
+import {useLocaleStore} from '../store/locale';
 import {gs} from '../styles';
 
 export function LegalScreen() {
+  const {t} = useLocaleStore();
   return (
     <View style={styles.container}>
       <Text style={[gs.text, gs.title]}>{t.legal}</Text>
