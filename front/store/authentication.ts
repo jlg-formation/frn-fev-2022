@@ -2,14 +2,20 @@ import {create} from 'zustand';
 import {domainUrl} from '../config';
 import {sleep} from '../misc';
 
+export interface User {
+  displayName: string;
+}
+
 export interface AuthenticationStore {
   isConnected: boolean;
+  user: User | undefined;
   connect: (login: string, password: string) => Promise<void>;
   disconnect: () => Promise<void>;
 }
 
 export const useAuthenticationStore = create<AuthenticationStore>(set => ({
   isConnected: false,
+  user: undefined,
   connect: async (login, password) => {
     try {
       console.log('login: ', login);
@@ -32,7 +38,7 @@ export const useAuthenticationStore = create<AuthenticationStore>(set => ({
       }
       const user = await response.json();
       console.log('user: ', user);
-      set(() => ({isConnected: true}));
+      set(() => ({isConnected: true, user: user}));
     } catch (err) {
       console.log('err: ', err);
       throw new Error('Technical error');
@@ -40,6 +46,6 @@ export const useAuthenticationStore = create<AuthenticationStore>(set => ({
   },
   disconnect: async () => {
     await sleep(2000);
-    set({isConnected: false});
+    set({isConnected: false, user: undefined});
   },
 }));

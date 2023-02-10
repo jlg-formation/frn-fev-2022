@@ -10,16 +10,21 @@ import {
   View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useAuthenticationStore} from '../store/authentication';
 import {useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
 
 export function HomeScreen() {
   const {t} = useLocaleStore();
+  const {user} = useAuthenticationStore();
   const hasPhoto = true;
   const addPhoto = () => {
     Vibration.vibrate(5);
     console.log('add photo');
   };
+  if (user === undefined) {
+    return <View />;
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -31,7 +36,7 @@ export function HomeScreen() {
           <TextInput
             style={styles.textArea}
             multiline={true}
-            placeholder={t.whatOnYourMind}
+            placeholder={'Hello ' + user.displayName + ' ! ' + t.whatOnYourMind}
           />
           <View style={styles.postAddBottom}>
             <TouchableNativeFeedback
