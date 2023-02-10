@@ -20,11 +20,16 @@ export function SettingsScreen() {
   };
 
   const onDisconnect = async () => {
-    console.log('disconnect');
-    setIsDisconnecting(true);
-    await disconnect();
-    setIsDisconnecting(false);
-    console.log('disconnected');
+    try {
+      console.log('disconnect');
+      setIsDisconnecting(true);
+      await disconnect();
+      console.log('disconnected');
+    } catch (err) {
+      console.error('err: ', err);
+    } finally {
+      setIsDisconnecting(false);
+    }
   };
 
   return (
