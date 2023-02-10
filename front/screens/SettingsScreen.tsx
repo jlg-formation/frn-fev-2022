@@ -1,17 +1,20 @@
 import React from 'react';
 import {TouchableNativeFeedback, StyleSheet, Text, View} from 'react-native';
+import {useAuthenticationStore} from '../store/authentication';
 import {Locale, useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
 
 export function SettingsScreen() {
   const {t, changeLocale} = useLocaleStore();
+  const {disconnect} = useAuthenticationStore();
   const changeLanguage = (locale: Locale) => () => {
     console.log('locale: ', locale);
     changeLocale(locale);
   };
 
-  const disconnect = () => {
+  const onDisconnect = () => {
     console.log('disconnect');
+    disconnect();
   };
 
   return (
@@ -33,7 +36,7 @@ export function SettingsScreen() {
         </View>
       </TouchableNativeFeedback>
       <Text style={[gs.text, gs.h2]}>{t.disconnect}</Text>
-      <TouchableNativeFeedback onPress={disconnect} style={styles.touchable}>
+      <TouchableNativeFeedback onPress={onDisconnect} style={styles.touchable}>
         <View style={styles.disconnectButton}>
           <Text style={styles.disconnectText}>{t.disconnect}</Text>
         </View>
