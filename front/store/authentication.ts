@@ -45,7 +45,14 @@ export const useAuthenticationStore = create<AuthenticationStore>(set => ({
     }
   },
   disconnect: async () => {
-    await sleep(2000);
-    set({isConnected: false, user: undefined});
+    try {
+      await fetch(domainUrl + '/api/auth/disconnect', {
+        method: 'POST',
+      });
+    } catch (err) {
+      console.log('err: ', err);
+    } finally {
+      set({isConnected: false, user: undefined});
+    }
   },
 }));

@@ -13,7 +13,7 @@ import {gs, primaryColor} from '../styles';
 
 const LoginScreen = () => {
   const [errorMsg, setErrorMsg] = useState('');
-  const [login, setLogin] = useState('');
+  const [login, setLogin] = useState('jlg@jlg.com');
   const [password, setPassword] = useState('');
   const [isConnecting, setIsConnecting] = useState(false);
   const {t} = useLocaleStore();
@@ -38,7 +38,7 @@ const LoginScreen = () => {
       <View style={gs.form}>
         <View style={gs.label}>
           <Text style={gs.text}>{t.login}</Text>
-          <TextInput style={gs.input} onChangeText={setLogin} />
+          <TextInput style={gs.input} onChangeText={setLogin} value={login} />
         </View>
         <View style={gs.label}>
           <Text style={gs.text}>{t.password}</Text>
