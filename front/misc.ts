@@ -4,3 +4,7 @@ export const sleep = (delay: number) =>
       resolve();
     }, delay),
   );
+
+console.error = (...args) => {
+  console.log(...args);
+};

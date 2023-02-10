@@ -26,9 +26,7 @@ export const gs = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
   },
-  submitButton: {
-    marginTop: 70,
-  },
+  submitButton: {},
   h2: {
     color: '#444',
     padding: 10,
@@ -36,5 +34,14 @@ export const gs = StyleSheet.create({
     fontWeight: 'bold',
     width: '100%',
     textAlign: 'left',
+  },
+  errorContainer: {
+    height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  errorText: {
+    fontWeight: 'bold',
+    color: 'red',
   },
 });

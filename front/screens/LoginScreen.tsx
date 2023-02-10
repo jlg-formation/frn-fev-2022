@@ -12,16 +12,22 @@ import {useLocaleStore} from '../store/locale';
 import {gs, primaryColor} from '../styles';
 
 const LoginScreen = () => {
+  const [errorMsg, setErrorMsg] = useState('');
   const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
   const [isConnecting, setIsConnecting] = useState(false);
   const {t} = useLocaleStore();
   const {connect} = useAuthenticationStore();
   const onSubmit = async () => {
     try {
+      setErrorMsg('');
       setIsConnecting(true);
-      await connect();
+      await connect(login, password);
     } catch (err) {
-      console.error('err: ', err);
+      console.log('err: ', err);
+      if (err instanceof Error) {
+        setErrorMsg(err.message);
+      }
     } finally {
       setIsConnecting(false);
     }
@@ -36,7 +42,17 @@ const LoginScreen = () => {
         </View>
         <View style={gs.label}>
           <Text style={gs.text}>{t.password}</Text>
-          <TextInput style={gs.input} secureTextEntry={true} />
+          <TextInput
+            style={gs.input}
+            secureTextEntry={true}
+            onChange={event => {
+              setPassword(event.nativeEvent.text);
+            }}
+            autoCapitalize="none"
+          />
+        </View>
+        <View style={gs.errorContainer}>
+          <Text style={gs.errorText}>{errorMsg}</Text>
         </View>
         <View style={gs.submitButton}>
           {isConnecting ? (
@@ -45,7 +61,6 @@ const LoginScreen = () => {
             <Button title="Se connecter" onPress={onSubmit} />
           )}
         </View>
-        <Text>login: {login}</Text>
       </View>
     </View>
   );
