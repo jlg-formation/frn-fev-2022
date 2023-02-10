@@ -47,7 +47,7 @@ export function SettingsScreen() {
       </TouchableNativeFeedback>
       <Text style={[gs.text, gs.h2]}>{t.disconnect}</Text>
       {isDisconnecting ? (
-        <ActivityIndicator />
+        <ActivityIndicator color={primaryColor} size="large" />
       ) : (
         <TouchableNativeFeedback
           onPress={onDisconnect}
