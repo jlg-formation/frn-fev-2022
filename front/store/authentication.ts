@@ -1,6 +1,5 @@
 import {create} from 'zustand';
 import {domainUrl} from '../config';
-import {sleep} from '../misc';
 
 export interface User {
   displayName: string;
@@ -11,6 +10,7 @@ export interface AuthenticationStore {
   user: User | undefined;
   connect: (login: string, password: string) => Promise<void>;
   disconnect: () => Promise<void>;
+  update: (user: User | undefined) => void;
 }
 
 export const useAuthenticationStore = create<AuthenticationStore>(set => ({
@@ -54,5 +54,12 @@ export const useAuthenticationStore = create<AuthenticationStore>(set => ({
     } finally {
       set({isConnected: false, user: undefined});
     }
+  },
+  update: (user: User | undefined) => {
+    if (user === undefined) {
+      set({isConnected: false, user: undefined});
+      return;
+    }
+    set({isConnected: true, user: user});
   },
 }));

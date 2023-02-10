@@ -32,13 +32,29 @@ const LoginScreen = () => {
       setIsConnecting(false);
     }
   };
+
+  const onChangeLogin = (newValue: string) => {
+    const v = newValue.replace(/\d/g, '');
+    console.log('v: ', v);
+    setLogin(v);
+    if (v.length > 15) {
+      setErrorMsg('maximum 15 char');
+    } else {
+      setErrorMsg('');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={[gs.text, gs.title]}>{t.loginScreen.title}</Text>
       <View style={gs.form}>
         <View style={gs.label}>
           <Text style={gs.text}>{t.login}</Text>
-          <TextInput style={gs.input} onChangeText={setLogin} value={login} />
+          <TextInput
+            style={gs.input}
+            onChangeText={onChangeLogin}
+            value={login}
+          />
         </View>
         <View style={gs.label}>
           <Text style={gs.text}>{t.password}</Text>

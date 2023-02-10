@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {api} from './api';
 import LoginScreen from './screens/LoginScreen';
 import MenuScreen from './screens/MenuScreen';
 import SplashScreen from './screens/SplashScreen';
@@ -9,10 +10,12 @@ function App() {
   const {isConnected} = useAuthenticationStore();
 
   useEffect(() => {
-    setTimeout(() => {
+    const checkIfConnected = async () => {
+      console.log('useEffect splashscreen');
+      await api.checkIfConnected();
       setShowSplashScreen(false);
-      console.log('change');
-    }, 2000);
+    };
+    checkIfConnected();
   }, []);
 
   return showSplashScreen ? (
