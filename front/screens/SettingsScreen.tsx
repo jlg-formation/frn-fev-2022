@@ -1,11 +1,17 @@
 import React from 'react';
 import {TouchableNativeFeedback, StyleSheet, Text, View} from 'react-native';
+import {t} from '../i18n';
 import {gs, primaryColor} from '../styles';
 
 export function SettingsScreen() {
   const changeLanguage = (locale: string) => () => {
     console.log('locale: ', locale);
   };
+
+  const disconnect = () => {
+    console.log('disconnect');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={[gs.text, gs.title]}>Settings Screen</Text>
@@ -22,6 +28,12 @@ export function SettingsScreen() {
         style={styles.touchable}>
         <View style={styles.changeLanguageButton}>
           <Text style={styles.changeLanguageText}>English</Text>
+        </View>
+      </TouchableNativeFeedback>
+      <Text style={[gs.text, gs.h2]}>{t.disconnect}</Text>
+      <TouchableNativeFeedback onPress={disconnect} style={styles.touchable}>
+        <View style={styles.disconnectButton}>
+          <Text style={styles.disconnectText}>{t.disconnect}</Text>
         </View>
       </TouchableNativeFeedback>
     </View>
@@ -49,6 +61,19 @@ const styles = StyleSheet.create({
   },
   changeLanguageText: {
     color: 'white',
+    fontWeight: 'bold',
+  },
+  disconnectButton: {
+    backgroundColor: 'white',
+    width: '100%',
+    padding: 10,
+    borderRadius: 5,
+    borderColor: primaryColor,
+    borderWidth: 1,
+    alignItems: 'center',
+  },
+  disconnectText: {
+    color: primaryColor,
     fontWeight: 'bold',
   },
 });
