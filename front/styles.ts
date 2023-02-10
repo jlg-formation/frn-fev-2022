@@ -9,8 +9,11 @@ export const gs = StyleSheet.create({
     fontSize: 16,
   },
   title: {
+    paddingVertical: 10,
     fontSize: 30,
     fontWeight: 'bold',
+    width: '100%',
+    textAlign: 'center',
   },
   form: {
     width: '100%',
