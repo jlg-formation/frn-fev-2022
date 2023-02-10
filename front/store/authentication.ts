@@ -3,15 +3,18 @@ import {sleep} from '../misc';
 
 export interface AuthenticationStore {
   isConnected: boolean;
-  connect: () => void;
+  connect: () => Promise<void>;
   disconnect: () => Promise<void>;
 }
 
 export const useAuthenticationStore = create<AuthenticationStore>(set => ({
   isConnected: false,
-  connect: () => set(() => ({isConnected: true})),
+  connect: async () => {
+    await sleep(2000);
+    set(() => ({isConnected: true}));
+  },
   disconnect: async () => {
     await sleep(2000);
-    return set({isConnected: false});
+    set({isConnected: false});
   },
 }));

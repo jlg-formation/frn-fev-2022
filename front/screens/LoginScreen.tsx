@@ -1,14 +1,29 @@
-import React from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  ActivityIndicator,
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {useAuthenticationStore} from '../store/authentication';
 import {useLocaleStore} from '../store/locale';
-import {gs} from '../styles';
+import {gs, primaryColor} from '../styles';
 
 const LoginScreen = () => {
+  const [isConnecting, setIsConnecting] = useState(false);
   const {t} = useLocaleStore();
   const {connect} = useAuthenticationStore();
-  const onSubmit = () => {
-    connect();
+  const onSubmit = async () => {
+    try {
+      setIsConnecting(true);
+      await connect();
+    } catch (err) {
+      console.error('err: ', err);
+    } finally {
+      setIsConnecting(false);
+    }
   };
   return (
     <View style={styles.container}>
@@ -23,7 +38,11 @@ const LoginScreen = () => {
           <TextInput style={gs.input} />
         </View>
         <View style={gs.submitButton}>
-          <Button title="Se connecter" onPress={onSubmit} />
+          {isConnecting ? (
+            <ActivityIndicator size="large" color={primaryColor} />
+          ) : (
+            <Button title="Se connecter" onPress={onSubmit} />
+          )}
         </View>
       </View>
     </View>
