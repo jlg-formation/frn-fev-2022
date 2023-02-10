@@ -4,6 +4,8 @@
   "description": "Back-End for Photobook",
   "scripts": {
     "start": "npx nodemon src/server.ts",
+    "build": "tsc",
+    "start:prod": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,10 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "crudity": "^2.0.9",
-    "express": "^4.17.2",
-    "express-session": "^1.17.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "morgan": "^1.10.0",
-    "multer": "^1.4.4"
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
